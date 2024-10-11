@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+    <style>
+        .titulo-vermelho {
+            color: red;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: aqua;
+            color: #333;
+        }
+
+        .forca {
+            font-size: 18px;
+            white-space: pre;
+            color: gray; /* Forca em cinzento */
+            text-align: left;
+            display: inline-block;
+        }
+
+        .boneco-amarelo {
+            color: yellow; /* Boneco em amarelo */
+        }
+
+        .palavra {
+            font-size: 24px;
+            letter-spacing: 8px;
+        }
+        .mensagem {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="titulo-vermelho">Jogo da Forca</h1>
+<p>Tente adivinhar a palavra antes que suas tentativas se esgotem.</p>
+<pre class="forca" id="forca"></pre>
+<div class="palavra" id="palavra"></div>
+<p>Tentativas restantes: <span id="tentativas"></span></p>
+<input type="text" id="letra" maxlength="1" placeholder="Digite uma letra">
+<button onclick="adivinhar()">Adivinhar</button>
+<div class="mensagem" id="mensagem"></div>
+
+<script>
+    const MAX_TENTATIVAS = 6;
+    let palavra = "programacao";
+    let acertadas = Array(palavra.length).fill(false);
+    let tentativas = 0;
+    
+    const estados = [
+        "______\n|    |\n|    \n|    \n|    \n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|    \n|    \n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|    <span class='boneco-amarelo'>|</span>\n|    \n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|   <span class='boneco-amarelo'>/|</span>\n|    \n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|   <span class='boneco-amarelo'>/|\\</span>\n|    \n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|   <span class='boneco-amarelo'>/|\\</span>\n|   <span class='boneco-amarelo'>/</span>\n|    \n",
+        "______\n|    |\n|    <span class='boneco-amarelo'>O</span>\n|   <span class='boneco-amarelo'>/|\\</span>\n|   <span class='boneco-amarelo'>/ \\</span>\n|    \n"
+    ];
+
+    function exibirForca() {
+        document.getElementById("forca").innerHTML = estados[tentativas];
+    }
+
+    function exibirPalavra() {
+        let exibicao = "";
+        for (let i = 0; i < palavra.length; i++) {
+            exibicao += acertadas[i] ? palavra[i] : "_";
+            exibicao += " ";
+        }
+        document.getElementById("palavra").innerText = exibicao;
+    }
+
+    function atualizarTentativas() {
+        document.getElementById("tentativas").innerText = MAX_TENTATIVAS - tentativas;
+    }
+
+    function verificarVitoria() {
+        return acertadas.every(Boolean);
+    }
+
+    function adivinhar() {
+        let letra = document.getElementById("letra").value.toLowerCase();
+        document.getElementById("letra").value = ""; // Limpa o input
+        if (!letra) return;
+
+        let acertou = false;
+        for (let i = 0; i < palavra.length; i++) {
+            if (palavra[i] === letra) {
+                acertadas[i] = true;
+                acertou = true;
+            }
+        }
+
+        if (!acertou) {
+            tentativas++;
+        }
+
+        exibirForca();
+        exibirPalavra();
+        atualizarTentativas();
+
+        if (verificarVitoria()) {
+            document.getElementById("mensagem").innerText = "Parabéns! Você ganhou!";
+        } else if (tentativas === MAX_TENTATIVAS) {
+            document.getElementById("mensagem").innerText = "Você perdeu! A palavra era: " + palavra;
+        }
+    }
+
+    // Inicialização
+    exibirForca();
+    exibirPalavra();
+    atualizarTentativas();
+</script>
+
+</body>
+</html>
