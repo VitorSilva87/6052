@@ -1,0 +1,100 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Necessário para a sobreposição */
+    overflow: hidden; /* Para esconder qualquer transbordamento */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://img.interempresas.net/fotos/3863285.jpeg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Ajuste a opacidade para clarear a imagem */
+    z-index: -1; /* Coloca a camada de imagem atrás do conteúdo */
+}
+
+.container {
+    text-align: center;
+ 
+    color: black; /* Torna o texto visível sobre a imagem clara */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+#roomButtons {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    margin-top: 20px; /* Espaçamento entre os botões */
+}
+
+.roomButton {
+    width: 200px; /* Largura fixa para os botões dos ambientes */
+}
+
+/* Estilo para o botão "Volta para Trás" */
+#backButton {
+    background-color: #dc3545; /* Cor do botão de voltar */
+    color: white;
+    position: absolute; /* Fixa a posição do botão "Volta para Trás" */
+    top: 20px; 
+    right: 20px; 
+    display: none; /* Inicialmente escondido */
+}
+
+/* Estilo para o botão "Entrar" */
+#enterButton {
+    position: absolute; /* Fixa a posição do botão "Entrar" */
+    top: 55%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro exato */
+}
+
+/* Estilo do botão "Ligar" quando ativado */
+.ligado {
+    background-color: yellow;
+    color: black; /* Ajusta o contraste com o texto */
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
