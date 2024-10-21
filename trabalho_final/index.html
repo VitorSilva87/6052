@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle da Casa</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo à Sua Casa</h1>
+        <button id="enterButton">Entrar</button>
+
+        
+        <div id="roomButtons" style="display: none;">
+            <button class="roomButton" data-room="Hall">Hall <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Cozinha">Cozinha <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Sala">Sala <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Quarto 1">Quarto 1 <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Quarto 2">Quarto 2 <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Quarto 3">Quarto 3 <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Casa de banho 1">Casa de banho 1 <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Casa de banho Geral">Casa de banho Geral <span class="lamp"></span></button>
+            <button class="roomButton" data-room="Portão Garagem">Portão Garagem <span class="lamp"></span></button>
+        </div>
+        
+
+       
+        <button id="backButton" style="display: none;">Volta para Trás</button>
+
+        
+        <div id="controlButtons" style="display: none;">
+            <div id="controlContainer"></div>
+        </div>
+    </div>
+</body>
+</html>
